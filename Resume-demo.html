@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="./style.css">
+    <script src="//at.alicdn.com/t/font_1704236_qvevzyq9ih.js"></script>
+    <style type="text/css">
+        .loading{height:200px;width:200px;position:relative;}
+        .loading::before,.loading::after{content:'';position: absolute;width: 10px;
+            height: 10px;top:0;bottom:0;left:0;right:0;margin:auto;border-radius:50%;
+            background-color:black;animation: s 1.5s linear infinite;}
+        .loading::after{animation-delay: 0.75s;}
+        @keyframes s{ 0%{width:0;height:0;opacity:1;} 100%{width:100px;height:100px;opacity:0;} }
+        .icon {
+            width: 1em; height: 1em;
+            vertical-align: -0.15em;
+            fill: currentColor;
+            overflow: hidden;
+        }
+        .site-welcome{
+            display: none;
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: #888888;
+            z-index: 1;
+            justify-content: center;
+            align-items: center;
+        }
+        .site-welcome.active{
+            display: flex;
+        }
+    </style>
+</head>
+<body>
+<!--弄一共大的div覆盖在上面，等下面的都运行完了，大的div消失就行-->
+<div id="siteWelcome" class="site-welcome active">
+    <div class="loading"></div>
+</div>
+<div id="topNavBar" class="topNavBar">
+    <div class="topNavBar-inner clearfix">
+        <a class="logo" href="#" alt="logo" style="float: left;">
+            <span class="rs">RS</span><span class="card">card</span>
+        </a>
+        <nav class="menu" style="float: right;">
+            <ul class="clearfix">
+                <li><a href="#siteAbout"> About</a></li>
+                <li><a href="#siteSkills"> skills</a></li>
+                <li>
+                    <a href="#siteExperience"> experience</a>
+                    <ul class="submenu">
+                        <li>作品1</li>
+                        <li>作品2</li>
+                        <li>作品3</li>
+                    </ul>
+                </li>
+                <li><a href="#"> pricing</a></li>
+                <li>
+                    <a href="#"> blog</a>
+                    <ul class="submenu">
+                        <li>博客1</li>
+                        <li>博客2</li>
+                        <li>博客3</li>
+                    </ul>
+                </li>
+                <li><a href="#"> calendar</a></li>
+                <li><a href="#">  contact</a></li>
+                <li><a href="#"> other</a></li>
+                <li><a href="#">  all demos</a></li>
+            </ul>
+        </nav>
+    </div>
+</div>
+
+<div class="banner">
+    <div class="mask"></div>
+</div>
+<!--文档流：文档里元素的流动方向
+文档流就是内联元素从左往右流动，块元素从上往下流动
+块级元素高度是由里面的文档流决定的
+内联元素有字体大小，字体类型决定，由系统确定，前端有时候不可控-->
+<main>
+    <div id="siteAbout" class="userCard">
+        <div class="pictureAndText clearfix">
+            <div class="picture">
+                <img src="./images/Damon.jpg" width="299px" height="347px" alt="头像" >
+            </div>
+            <div class="text">
+                <div class="summary">
+                        <span class="welcome">Hello
+                            <span class="triangle"></span>
+                        </span>
+                    <h1>范淑君</h1>
+                    <p>我是一名前端工程师</p>
+                    <hr>
+                    <!--description list-->
+                    <dl>
+                        <!--description list-->
+                        <dt>Age</dt>
+                        <!--description definition-->
+                        <dd>18</dd>
+                        <dt>city</dt>
+                        <dd>wuxi</dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+        <div>
+            <footer class="media">
+                <a href="#">
+                    <svg class="icon" aria-hidden="true">
+                        <use xlink:href="#icon-twitter"></use>
+                    </svg>
+                </a>
+                <a href="#">
+                    <svg class="icon" aria-hidden="true">
+                        <use xlink:href="#icon-666"></use>
+                    </svg>
+                </a>
+                <a href="#">
+                    <svg class="icon" aria-hidden="true">
+                        <use xlink:href="#icon-weibo"></use>
+                    </svg>
+                </a>
+                <a href="#">
+                    <svg class="icon" aria-hidden="true">
+                        <use xlink:href="#icon-github"></use>
+                    </svg>
+                </a>
+            </footer>
+        </div>
+    </div>
+    <p style="text-align: center">
+        <a class="download" href="./images/Damon.jpg" target="_blank" download>下载pdf</a>
+    </p>
+    <p class="selfIntroduction">
+        范淑君， 前端工程师
+        <br> 技能：前端开发，Rails 开发，Node.js 开发
+    </p>
+</main>
+<section id="siteSkills" class="skills">
+    <h2>技能</h2>
+    <ol class="clearfix">
+        <li>
+            <h3>
+                HTML 5 &amp; CSS 3
+            </h3>
+            <div class="progressBar">
+                <div class="progress" style="width: 10%;"></div>
+            </div>
+        </li>
+        <li>
+            <h3>
+                JavaScript
+            </h3>
+            <div class="progressBar">
+                <div class="progress" style="width: 20%"></div>
+            </div>
+        </li>
+        <li>
+            <h3>
+                jQuery
+            </h3>
+            <div class="progressBar">
+                <div class="progress" style="width: 30%"></div>
+            </div>
+        </li>
+        <li>
+            <h3>
+                Vue.js
+            </h3>
+            <div class="progressBar">
+                <div class="progress" style="width: 40%"></div>
+            </div>
+        </li>
+        <li>
+            <h3>
+                React.js
+            </h3>
+            <div class="progressBar">
+                <div class="progress"  style="width: 50%"></div>
+            </div>
+        </li>
+        <li>
+            <h3>
+                Node.js
+            </h3>
+            <div class="progressBar">
+                <div class="progress"  style="width: 60%"></div>
+            </div>
+        </li>
+    </ol>
+</section>
+<section id="siteExperience" class="portfolio">
+    <h2>作品集</h2>
+    <nav>
+        <ol class="clearfix">
+            <li id="portfolio1">所有</li>
+            <li id="portfolio2">框架</li>
+            <li id="portfolio3">原生JS&amp;CSS</li>
+        </ol>
+        <div id="portfolioBar" class="bar state-1">
+            <div class="bar-inner"></div>
+        </div>
+    </nav>
+    <script>
+        portfolio1.onclick= function(){
+            portfolioBar.className = 'bar state-1'
+        }
+        portfolio2.onclick= function(){
+            portfolioBar.className = 'bar state-2'
+        }
+        portfolio3.onclick= function(){
+            portfolioBar.className = 'bar state-3'
+        }
+    </script>
+
+
+    <div class="works" style="height: 597px;">
+        <div class="big" style="top: 0; left: 0;">
+            <img src="./images/big.png" alt="作品1">
+        </div>
+        <div class="small" style="top: 0; left: 645px;">
+            <img src="./images/small1.png" alt="作品2">
+        </div>
+        <div class="small" style="top: 312px; left: 645px;">
+            <img src="./images/small1.png" alt="作品3">
+        </div>
+    </div>
+
+</section>
+<script>
+    setTimeout(function () {
+        siteWelcome.classList.remove('active')
+    },1000)
+    window.onscroll= function () {
+        if(window.scrollY>0){
+            topNavBar.classList.add('sticky')
+        }else{
+            topNavBar.classList.remove('sticky')
+        }
+    }
+    let liTags = document.querySelectorAll('nav.menu>ul>li');
+    console.log(liTags)
+    //<!--遍历哈希-->
+    for (let i=0; i<liTags.length;i++){
+        liTags[i].onmouseenter = function (x){
+            //console.log('mouseenter')
+            //console.log(x.target);//操纵的目标和激励的目标不一样
+            //console.log(x.currentTarget);
+           //let li= x.currentTarget;
+           // let brother= li.getElementsByTagName('ul')[0];//a的下个节点
+          //  brother.classList.add('active');
+            x.currentTarget.classList.add('active');
+           // console.log(a.nextSibling.nextSibling)
+            //Node.Text_Node===3
+           // while (brother.tagName !== 'UL'){//如果brother是一个文本节点
+                //tagName返回要大写
+               // brother = brother.nextSibling;
+            //}
+          //  console.log(brother);
+        }
+        liTags[i].onmouseleave = function (x) {
+           // console.log('mouseleave')
+           /* let li= x.currentTarget;
+            let brother= li.getElementsByTagName('ul')[0];//a的下个节点
+            brother.classList.remove('active');*/
+            x.currentTarget.classList.remove('active');
+        }
+    }
+    let aTags= document.querySelectorAll('nav.menu > ul>li>a');
+    for (let i=0; i<aTags.length; i++){
+        aTags[i].onclick=function (x) {
+            x.preventDefault();
+            let a = x.currentTarget;
+            let href = a.getAttribute('href');//'#siteAbot'
+            let element= document.querySelector(href);
+            let top= element.offsetTop;
+            window.scrollTo(0,top - 80);
+            console.log(element)
+
+        }
+    }
+</script>
+</body>
+
+</html>
+
+<!-- 用CSS画三角形
+ <div class="triangle">
+ </div>
+ -->
