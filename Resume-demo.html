@@ -83,7 +83,7 @@
 块级元素高度是由里面的文档流决定的
 内联元素有字体大小，字体类型决定，由系统确定，前端有时候不可控-->
 <main>
-    <div id="siteAbout" class="userCard">
+    <div data-x id="siteAbout" class="userCard">
         <div class="pictureAndText clearfix">
             <div class="picture">
                 <img src="./images/Damon.jpg" width="299px" height="347px" alt="头像" >
@@ -141,7 +141,7 @@
         <br> 技能：前端开发，Rails 开发，Node.js 开发
     </p>
 </main>
-<section id="siteSkills" class="skills">
+<section data-x id="siteSkills" class="skills">
     <h2>技能</h2>
     <ol class="clearfix">
         <li>
@@ -194,7 +194,7 @@
         </li>
     </ol>
 </section>
-<section id="siteExperience" class="portfolio">
+<section data-x id="siteExperience" class="portfolio">
     <h2>作品集</h2>
     <nav>
         <ol class="clearfix">
@@ -232,19 +232,53 @@
     </div>
 
 </section>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tween.js/17.1.1/Tween.min.js"></script>
 <script>
     setTimeout(function () {
         siteWelcome.classList.remove('active')
     },1000)
-    window.onscroll= function () {
+    //添加offset类
+    let specialTags= document.querySelectorAll('[data-x]');
+    for(let i=0;i<specialTags.length;i++){
+        specialTags[i].classList.add('offset')
+        }
+    setTimeout(function () {
+        findClosest();
+    },1000)//这个1s是因为上面loading占时间
+    window.onscroll= function (x) {
         if(window.scrollY>0){
             topNavBar.classList.add('sticky')
         }else{
             topNavBar.classList.remove('sticky')
         }
+        findClosest();
+    }
+    function findClosest(){
+        let specialTags= document.querySelectorAll('[data-x]');
+        let minIndex=0;
+        for(let i=1;i<specialTags.length;i++){
+            if(Math.abs(specialTags[i].offsetTop - window.scrollY)
+                < Math.abs(specialTags[minIndex].offsetTop-window.scrollY)){
+                minIndex=i;
+            }
+        }
+        //minIndex 就是窗口顶部最近的元素
+        specialTags[minIndex].classList.remove('offset');
+        for(let i=0;i<specialTags.length;i++){
+            specialTags[i].classList.remove('active');
+        }
+        //specialTags[minIndex].classList.add('active');
+        let id= specialTags[minIndex].id;//获取id
+        let a= document.querySelector('a[href="#'+ id +'"]');
+        let li = a.parentNode;
+        let brotherAndMe = li.parentNode.children;
+        for(let i=0;i<brotherAndMe.length;i++){
+            brotherAndMe[i].classList.remove('highlight');
+        }
+        li.classList.add('highlight');
     }
     let liTags = document.querySelectorAll('nav.menu>ul>li');
-    console.log(liTags)
+   // console.log(liTags)
     //<!--遍历哈希-->
     for (let i=0; i<liTags.length;i++){
         liTags[i].onmouseenter = function (x){
@@ -272,6 +306,12 @@
         }
     }
     let aTags= document.querySelectorAll('nav.menu > ul>li>a');
+    function animate(time) {
+        requestAnimationFrame(animate);
+        TWEEN.update(time);
+    }
+    requestAnimationFrame(animate);
+
     for (let i=0; i<aTags.length; i++){
         aTags[i].onclick=function (x) {
             x.preventDefault();
@@ -279,11 +319,38 @@
             let href = a.getAttribute('href');//'#siteAbot'
             let element= document.querySelector(href);
             let top= element.offsetTop;
-            window.scrollTo(0,top - 80);
-            console.log(element)
 
+          /*  let n=25;
+            let t = 500/n;
+            let currentTop = window.scrollY;
+            let targetTop = top -80;
+            let s = (targetTop-currentTop)/n;
+            let i=0;
+            let id=setInterval(()=>{
+                if(i===n){
+                    window.clearInterval(id);
+                    return;
+                }i=i+1;
+                window.scrollTo(0, currentTop+ s*i);
+            },t)*/
+            let currentTop = window.scrollY;
+            let targetTop = top -80;
+            let s = (targetTop-currentTop);
+            var coords = {y: currentTop};
+            var t=Math.abs((s/100))*300;
+            if (t>500){t=500};
+            var tween = new TWEEN.Tween(coords) // Create a new tween that modifies 'coords'.
+                .to({ y: targetTop}, 1000) // Move to (300, 200) in 1 second.
+                .easing(TWEEN.Easing.Quadratic.In) // Use an easing function to make the animation smooth.
+                .onUpdate(function(){
+                    window.scrollTo(0, coords.y);
+                })
+                .start(); // Start the tween immediately.
         }
     }
+
+
+
 </script>
 </body>
 
