@@ -4,9 +4,7 @@
     for(let i=0;i<specialTags.length;i++){
         specialTags[i].classList.add('offset')
     }
-    setTimeout(function () {
-        findClosestAndRemoveOffset();
-    },1000)//这个1s是因为上面loading占时间
+    findClosestAndRemoveOffset();//这个1s是因为上面loading占时间
     window.addEventListener('scroll', function (x) {
         findClosestAndRemoveOffset();
     })
