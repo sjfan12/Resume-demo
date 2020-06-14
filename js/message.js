@@ -1,42 +1,15 @@
 !function(){
-    var view = document.querySelector('section.messages')
-    var model = {
-        init: function(){
-                AV.init({
-                    appId: "bVJTUEzHit4ATYqjCaaNOlme-gzGzoHsz",
-                    appKey: "hIjs6hhe2X18JQ6BAkl0KoIq",
-                    serverURL: "https://bvjtuezh.lc-cn-n1-shared.com"
-                });
-        },
-        fetch: function () {
-            const query = new AV.Query('Message');
-            return query.find()//Promise对象
-        },
-        save: function (name,content) {
-            const Message = AV.Object.extend('Message')
-            const message = new Message()
-            // console.log(message)
-            message.set({'name': name,'content': content})
-            return message.save()
+    var view = View('section.messages')
+    var model = Model({resourceName: 'Message'})
 
-        }
-
-    }
-    var controller={
-        view: null,
-        model: null,
-        messageList: null,
-        init: function(view) {
-            this.view = view
-            this.model=model
+    var controller = Controller({
+        init: function (view, controller) {
             this.messageList = view.querySelector('#messageList')
             this.form = view.querySelector('form')
-            this.model.init()
             this.loadMessages()
-            this.bindEvents()
         },
         loadMessages: function(){
-           this.model.fetch().then((messages) => {
+            this.model.fetch().then((messages) => {
                 // console.log(messages)
                 // console.log(messages[0].attributes)
                 let array = messages.map((items)=>items.attributes)
@@ -59,7 +32,7 @@
             let myForm = this.form
             let content = myForm.querySelector('input[name=content]').value
             let name = myForm.querySelector('input[name=name]').value
-            this.model.save(name,content).then((message)=>{
+            this.model.save({'name':name,'content':content}).then((message)=>{
                 console.log('保存成功')
                 //  window.location.reload()//自动刷新页面
                 let li = document.createElement('li')
@@ -71,7 +44,8 @@
                 myForm.querySelector('input[name=name]').value=''
             })
         },
-    }
+    })
+
     controller.init(view,model)
 }.call()
 
