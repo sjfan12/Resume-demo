@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <title></title>
-    <link rel="stylesheet" href="https://unpkg.com/swiper/css/swiper.css">
-    <link rel="stylesheet" href="https://unpkg.com/swiper/css/swiper.min.css">
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+    <link rel="stylesheet" href="../dist/css/style.css">
     <script src="//at.alicdn.com/t/font_1704236_qvevzyq9ih.js"></script>
 </head>
 <body>
@@ -30,7 +30,7 @@
                         <li>作品3</li>
                     </ul>
                 </li>
-                <li><a href="#"> pricing</a></li>
+
                 <li>
                     <a href="#"> blog</a>
                     <ul class="submenu">
@@ -39,10 +39,6 @@
                         <li>博客3</li>
                     </ul>
                 </li>
-                <li><a href="#"> calendar</a></li>
-                <li><a href="#">  contact</a></li>
-                <li><a href="#"> other</a></li>
-                <li><a href="#">  all demos</a></li>
             </ul>
         </nav>
     </div>
@@ -59,24 +55,30 @@
     <div data-x id="siteAbout" class="userCard">
         <div class="pictureAndText clearfix">
             <div class="picture">
-                <img src="./images/Damon.jpg" width="299px" height="347px" alt="头像" >
+                <img src="images/证件照.jpg" width="299px" height="347px" alt="头像" >
             </div>
             <div class="text">
                 <div class="summary">
-                        <span class="welcome">Hello
+                        <span class="welcome">前端开发工程师
                             <span class="triangle"></span>
                         </span>
                     <h1>范淑君</h1>
-                    <p>我是一名前端工程师</p>
+                    <p>我是一名在读研究生，应聘前端开发工程师</p>
                     <hr>
                     <!--description list-->
                     <dl>
                         <!--description list-->
-                        <dt>Age</dt>
+                        <dt>年龄</dt>
                         <!--description definition-->
-                        <dd>18</dd>
-                        <dt>city</dt>
-                        <dd>wuxi</dd>
+                        <dd>25</dd>
+                        <dt>学校</dt>
+                        <dd>江南大学</dd>
+                        <dt>城市</dt>
+                        <dd>无锡</dd>
+                        <dt>邮箱</dt>
+                        <dd>1029563017@qq.com</dd>
+                        <dt>政治面貌</dt>
+                        <dd>党员</dd>
                     </dl>
                 </div>
             </div>
@@ -107,11 +109,7 @@
         </div>
     </div>
     <p style="text-align: center">
-        <a class="download" href="./images/Damon.jpg" target="_blank" download>下载pdf</a>
-    </p>
-    <p class="selfIntroduction">
-        范淑君， 前端工程师
-        <br> 技能：前端开发，Rails 开发，Node.js 开发
+        <a class="download" href="images/Damon.jpg" target="_blank" download>下载pdf</a>
     </p>
 </main>
 <section data-x id="siteSkills" class="skills">
@@ -122,7 +120,7 @@
                 HTML 5 &amp; CSS 3
             </h3>
             <div class="progressBar">
-                <div class="progress" style="width: 10%;"></div>
+                <div class="progress" style="width: 80%;"></div>
             </div>
         </li>
         <li>
@@ -130,7 +128,7 @@
                 JavaScript
             </h3>
             <div class="progressBar">
-                <div class="progress" style="width: 20%"></div>
+                <div class="progress" style="width: 80%"></div>
             </div>
         </li>
         <li>
@@ -138,20 +136,20 @@
                 jQuery
             </h3>
             <div class="progressBar">
-                <div class="progress" style="width: 30%"></div>
+                <div class="progress" style="width: 70%"></div>
             </div>
         </li>
         <li>
             <h3>
-                Vue.js
+                Node.js
             </h3>
             <div class="progressBar">
-                <div class="progress" style="width: 40%"></div>
+                <div class="progress" style="width: 50%"></div>
             </div>
         </li>
         <li>
             <h3>
-                React.js
+                MongoDB
             </h3>
             <div class="progressBar">
                 <div class="progress"  style="width: 50%"></div>
@@ -159,7 +157,7 @@
         </li>
         <li>
             <h3>
-                Node.js
+                Vue.js
             </h3>
             <div class="progressBar">
                 <div class="progress"  style="width: 60%"></div>
@@ -169,6 +167,7 @@
 </section>
 <section data-x id="siteExperience" class="portfolio">
     <h2>作品集</h2>
+<!--
     <nav>
         <ol class="clearfix">
             <li id="portfolio1">所有</li>
@@ -190,14 +189,15 @@
             portfolioBar.className = 'bar state-3'
         }
     </script>
+-->
 <!--加轮播-->
     <!--这就是view-->
     <div id="MySwiper">
         <div class="swiper-container">
             <div class="swiper-wrapper">
-                <img src="./works/键盘.png" class="swiper-slide">
-                <img src="./works/canvas.jpg" class="swiper-slide">
-                <img src="./works/轮播.png" class="swiper-slide">
+                <img src="../works/键盘.png" class="swiper-slide">
+                <img src="../works/canvas.jpg" class="swiper-slide">
+                <img src="../works/轮播.png" class="swiper-slide">
             </div>
             <!-- 如果需要分页器 -->
             <div class="swiper-pagination"></div>
@@ -224,10 +224,15 @@
 
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tween.js/17.1.1/Tween.min.js"></script>
-<script src="https://unpkg.com/swiper/js/swiper.js"> </script>
-<script src="https://unpkg.com/swiper/js/swiper.min.js"> </script>
+
+<script src="https://unpkg.com/swiper/swiper-bundle.js"> </script>
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"> </script>
+
 <script src="//cdn.jsdelivr.net/npm/leancloud-storage@4.6.1/dist/av-min.js"></script>
+
+
 <!--模块化-->
+
 <script src="./js/base/View.js"></script>
 <script src="./js/base/Model.js"></script>
 <script src="./js/base/Controller.js"></script>
@@ -270,7 +275,7 @@
     }
 
 </script>
-</body>
+<script src="bundle.js"></script></body>
 
 </html>
 
